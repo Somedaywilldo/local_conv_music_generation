@@ -123,3 +123,6 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 ```
 The final element.
 ```
+| Naive 3 layer CNN | LocalConv 3 layer CNN | Naive resNet| LocalConv resNet |LSTM |
+| :---: | :---: | :---: | :---: | :---: |
+| {% include audio_player.html filename="ST_CNNNaive_1.mp3" %}<br> | {% include audio_player.html filename="ST_CNNLocal_1.mp3" %}<br> | {% include audio_player.html filename="ST_resNetNaive_1.mp3" %}<br> | {% include audio_player.html filename="ST_resNetLocal_1.mp3" %}<br> | {% include audio_player.html filename="ST_LSTM_1.mp3" %}<br> |
