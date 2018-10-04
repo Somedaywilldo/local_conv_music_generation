@@ -30,19 +30,25 @@ LocalConv resNet Model:
 LSTM Model:
 {% include audio_player.html filename="ST_LSTM_1.mp3" %}<br>
 
+| Naive 3 layer CNN | LocalConv 3 layer CNN | Naive resNet| LocalConv resNet |LSTM |
+| :---: | :---: | :---: | :---: | :---: |
+| {% include audio_player.html filename="ST_CNNNaive_1.mp3" %}<br> | {% include audio_player.html filename="ST_CNNLocal_1.mp3" %}<br> | {% include audio_player.html filename="ST_resNetNaive_1.mp3" %}<br> | {% include audio_player.html filename="ST_resNetLocal_1.mp3" %}<br> | {% include audio_player.html filename="ST_LSTM_1.mp3" %}<br> |
+
 ### Polyphonic Music Generation Result(mp3)
-LocalConv 3 layer CNN Model:{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}
-LSTM Model:{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}
+LocalConv 3 layer CNN Model:
+{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}
+LSTM Model:
+{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}
 
 ### Monophonic Music Generation Result(music sheet)
 | LocalConv 3 layer CNN Model | LSTM Model |
 | :---: | :---:|
-| ![Octocat](audio/ST_CNNLocal_1.png)<br> | ![Octocat](audio/ST_LSTM_1.png)<br>|
+| ![Octocat](audio/ST_CNNLocal_1.png)<br> | ![Octocat](audio/ST_LSTM_1.png)<br> |
 
 ### Polyphonic Music Generation Result(music sheet)
 | LocalConv 3 layer CNN Model | LSTM Model |
 | :---: | :---:|
-| ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br>|
+| ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br> |
 
 
 ### Training Result
@@ -61,6 +67,6 @@ We can find the Local Conv model distinctly improve the performance of naive CNN
 | resNet20\_LocalConv | **0.0044** | 46.32 | **8** | 12.41 |
 | LSTM | 0.0061 | 81.71 | 22 | 1.15 |
 
-### Application: XiaoJoy Project
+# Application: XiaoJoy Project
 Explore the possibility that human composer create music together with AI. 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/M1_H2c-XFQ0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
