@@ -19,34 +19,35 @@ For resNet, we can divide the resNet into different blocks according to the feat
 
 #Result
 ### Monophonic Music Generation Result(mp3)
-Naive 3 layer CNN Model:<br>
+Naive 3 layer CNN Model:
 {% include audio_player.html filename="ST_CNNNaive_1.mp3" %}<br>
-LocalConv 3 layer CNN Model:<br>
+LocalConv 3 layer CNN Model:
 {% include audio_player.html filename="ST_CNNLocal_1.mp3" %}<br>
-Naive resNet Model:<br>
+Naive resNet Model:
 {% include audio_player.html filename="ST_resNetNaive_1.mp3" %}<br>
-LocalConv resNet Model:<br>
+LocalConv resNet Model:
 {% include audio_player.html filename="ST_resNetLocal_1.mp3" %}<br>
-LSTM Model:<br>
+LSTM Model:
 {% include audio_player.html filename="ST_LSTM_1.mp3" %}<br>
 
 ### Polyphonic Music Generation Result(mp3)
-LocalConv 3 layer CNN Model:<br>
+LocalConv 3 layer CNN Model:
 {% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}<br>
-LSTM Model:<br>
+LSTM Model:
 {% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}<br>
 
 ### Monophonic Music Generation Result(music sheet)
-LocalConv 3 layer CNN Model:<br>
-![Octocat](audio/ST_CNNLocal_1.png)<br>
-LSTM Model:<br>
-![Octocat](audio/ST_LSTM_1.png)
+| LocalConv 3 layer CNN Model | LSTM Model |
+| :---: | :---:|
+| ![Octocat](audio/ST_CNNLocal_1.png)<br> | ![Octocat](audio/ST_LSTM_1.png)<br>|
+
 
 ### Polyphonic Music Generation Result(music sheet)
-LocalConv 3 layer CNN Model:<br>
-![Octocat](audio/MT_CNN_3Layer-1.png)<br>
-LSTM Model:<br>
-![Octocat](audio/MT_LSTM512_BachAll-1.png)
+
+| LocalConv 3 layer CNN Model | LSTM Model |
+| :---: | :---:|
+| ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br>|
+
 
 ### Training Result
 
@@ -64,25 +65,6 @@ We can find the Local Conv model distinctly improve the performance of naive CNN
 | resNet20\_LocalConv | **0.0044** | 46.32 | **8** | 12.41 |
 | LSTM | 0.0061 | 81.71 | 22 | 1.15 |
 
-
-### Small image
-<center>
-<img src='audio/MT_LSTM512_BachAll-1.png' width="25%" height="25%" />
-![Octocat](audio/MT_LSTM512_BachAll-1.png)
-$ $
-Figure 1. Lena
-</center>
-
-![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+### Application: XiaoJoy Project
+Explore the possibility that human composer create music together with AI. 
+<iframe  src="https://www.youtube.com/embed/M1_H2c-XFQ0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
