@@ -32,9 +32,9 @@ LSTM Model:
 
 ### Polyphonic Music Generation Result(mp3)
 LocalConv 3 layer CNN Model:
-{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}<br>
+{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}
 LSTM Model:
-{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}<br>
+{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}
 
 ### Monophonic Music Generation Result(music sheet)
 | LocalConv 3 layer CNN Model | LSTM Model |
@@ -43,7 +43,6 @@ LSTM Model:
 
 
 ### Polyphonic Music Generation Result(music sheet)
-
 | LocalConv 3 layer CNN Model | LSTM Model |
 | :---: | :---:|
 | ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br>|
