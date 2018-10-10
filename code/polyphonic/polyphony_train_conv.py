@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from __future__ import print_function
 from keras.callbacks import LambdaCallback
 from keras.models import Sequential
@@ -28,19 +30,20 @@ import pickle as pkl
 from polyphony_dataset_convertor import *
 
 
-
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer('batch_size', 1024, 'LSTM Layer Units Number')
 tf.app.flags.DEFINE_integer('epochs', 150, 'Total epochs')
 tf.app.flags.DEFINE_integer('maxlen', 64, 'Max length of a sentence')
-tf.app.flags.DEFINE_integer('generate_length', 3200, 'Number of steps of generated music')
+tf.app.flags.DEFINE_integer('generate_length', 3200,
+                            'Number of steps of generated music')
 tf.app.flags.DEFINE_integer('units', 512, 'LSTM Layer Units Number')
 tf.app.flags.DEFINE_integer('dense_size', 0, 'Dense Layer Size')
 tf.app.flags.DEFINE_integer('step', 4, 'Step length when building dataset')
 tf.app.flags.DEFINE_integer('embedding_length', 1, 'Embedding length')
-tf.app.flags.DEFINE_string('dataset_name', 'Bach', 'Dataset name will be the prefix of exp_name')
-tf.app.flags.DEFINE_string('dataset_dir', './datasets/', 'Dataset Directory, which should contain name_train.txt and name_eval.txt')
-
+tf.app.flags.DEFINE_string('dataset_name', 'Bach',
+                           'Dataset name will be the prefix of exp_name')
+tf.app.flags.DEFINE_string('dataset_dir', './datasets/',
+                           'Dataset Directory, which should contain name_train.txt and name_eval.txt')
 
 
 batch_size = FLAGS.batch_size
@@ -65,7 +68,7 @@ from ConvResModel import *
 from ConvOtherStructureModel import *
 from keras import backend as K
 import sys
-if(len(sys.argv)!=1):
+if(len(sys.argv) != 1):
     order = int(sys.argv[1])
     if(order == 0):
         name_suffix = 'A'
@@ -91,27 +94,14 @@ if(len(sys.argv)!=1):
     if (order == 7):
         name_suffix = 'LSTM'
         get_model_fn = get_lstm_model
-# model = get_conv1d_model_naive(input_shape=train_input_shape,output_shape = train_output_shape)
-# model = get_conv1d_model(input_shape=train_input_shape,output_shape = train_output_shape)
-# model = get_resnet_model_naive(input_shape=train_input_shape,output_shape = train_output_shape)
-# model = get_resNet_model(input_shape=train_input_shape,output_shape = train_output_shape)
-# get_model_fn = get_lstm_model
-# model = resnet_v1_110(input_shape=train_input_shape,output_shape = train_output_shape)
-# get_model_fn = get_conv1d_model_b_small
 
-# get_model_fn = get_conv1d_model_naive_big
-# get_model_fn = get_conv1d_model_b
-# get_model_fn = get_conv1d_model_naive
 
-# get_model_fn = get_conv1d_model
-# get_model_fn = get_resNet_model
-# name_suffix = 'resNetLocal'
 exp_name = name_suffix + "_3Layer_%s_batchS%d_epochs%d_maxL%d_step%d_embeddingL%d_%s" % (dataset_name,
-                                                                        batch_size, epochs, maxlen, step,
-                                                                        embedding_length, date_and_time)
+                                                                                         batch_size, epochs, maxlen, step,
+                                                                                         embedding_length, date_and_time)
 vector_dim = 259
-# train_dataset_path = os.path.join(dataset_dir, dataset_name+'_train.pkl')
-# eval_dataset_path = os.path.join(dataset_dir, dataset_name+'_eval.pkl')
+
+
 train_dataset_path = './datasets/Bach_new_train.pkl'
 eval_dataset_path = './datasets/Bach_new_eval.pkl'
 
@@ -140,11 +130,6 @@ with open(eval_dataset_path, "rb") as eval_file:
 print('Eval dataset shape:', eval_data.shape)
 
 
-# import ipdb; ipdb.set_trace()
-# print(train_data[0].shape)
-# print(train_data[0])
-
-
 train_data = train_data[:int(len(train_data)/1)]
 eval_data = eval_data[:int(len(eval_data)/1)]
 
@@ -163,14 +148,14 @@ def make_log_dirs(dirs):
             os.makedirs(dir)
 
 
-dirs = [log_dir, TB_log_dir, console_log_dir, model_log_dir, data_log_dir, midi_log_dir]
+dirs = [log_dir, TB_log_dir, console_log_dir,
+        model_log_dir, data_log_dir, midi_log_dir]
 make_log_dirs(dirs)
 
 max_acc_log_path = os.path.join(log_root, "logdir", "max_acc_log.txt")
 
 
 def get_embedded_data2(data, maxlen, embedding_length):
-    # cut the data in semi-redundant sequences of maxlen characters
 
     inputs = data[:len(data) - 1]
     labels = data[1:len(data)]
@@ -183,29 +168,21 @@ def get_embedded_data2(data, maxlen, embedding_length):
     labels = to_categorical(labels, 259)
     inputs_emb = inputs
     label_emb = labels
-    # inputs_emb = []
-    # label_emb = []
-    # for i in range(0, len(inputs) - embedding_length, 1):
-    #     inputs_emb.append(inputs[i: i + embedding_length].flatten())
-    #     label_emb.append(labels[i + embedding_length])
 
     inputs_maxlen = np.array(inputs_emb[0:maxlen])
     label_maxlen = np.array(label_emb[0])
-    # for i in pbar(range(0, 10000)):
+
     pbar = ProgressBar()
     for i in pbar(range(1, len(inputs_emb) - maxlen, step)):
-        # print('inputs_maxlen shape:' , inputs_maxlen.shape)
-        # print('inputs_emb shape:', inputs_emb[i: i + maxlen].shape)
-        # import ipdb; ipdb.set_trace()
-        inputs_maxlen = np.concatenate((inputs_maxlen, inputs_emb[i: i + maxlen]) ,axis=0)
-        label_maxlen = np.append(label_maxlen, label_emb[i+maxlen])
-        # label_maxlen.append(label_emb[i+maxlen])
 
-    # return inputs_emb, label_emb
-    return np.asarray(inputs_maxlen, dtype=np.float16), np.asarray(label_maxlen,dtype=np.float16)
+        inputs_maxlen = np.concatenate(
+            (inputs_maxlen, inputs_emb[i: i + maxlen]), axis=0)
+        label_maxlen = np.append(label_maxlen, label_emb[i+maxlen])
+
+    return np.asarray(inputs_maxlen, dtype=np.float16), np.asarray(label_maxlen, dtype=np.float16)
+
 
 def get_embedded_data(data, maxlen, embedding_length):
-    # cut the data in semi-redundant sequences of maxlen characters
 
     inputs = data[:len(data) - 1]
     labels = data[1:len(data)]
@@ -219,7 +196,7 @@ def get_embedded_data(data, maxlen, embedding_length):
 
     inputs_emb = []
     label_emb = []
-    # print('range', (0, len(inputs) - embedding_length, 1))
+
     pbar = ProgressBar()
     for i in pbar(range(0, len(inputs) - embedding_length, 1)):
         inputs_emb.append(inputs[i: i + embedding_length].flatten())
@@ -232,10 +209,8 @@ def get_embedded_data(data, maxlen, embedding_length):
         inputs_maxlen.append((inputs_emb[i: i + maxlen]))
         label_maxlen.append(label_emb[i+maxlen])
     print('Finished Timestep  embedding')
-    # return inputs_emb, label_emb
+
     return np.array(inputs_maxlen), np.array(label_maxlen)
-
-
 
 
 train_data = train_data[:int(len(train_data))]
@@ -248,15 +223,14 @@ x_eval, y_eval = get_embedded_data(eval_data, maxlen, embedding_length)
 print('Vectorization Finished!')
 
 
-
 def print_fn(str):
     print(str)
     console_log_file = os.path.join(console_log_dir, 'console_output.txt')
     with open(console_log_file, 'a+') as f:
         print(str, file=f)
 
+
 def lr_schedule(epoch):
-    # Learning Rate Schedule
 
     lr = 1e-3
     if epoch >= epochs * 0.9:
@@ -277,35 +251,33 @@ print_fn('Build model...')
 
 
 train_output_shape = vector_dim
-train_input_shape = ( maxlen, vector_dim )
+train_input_shape = (maxlen, vector_dim)
 
-model = get_model_fn(input_shape=train_input_shape,output_shape = train_output_shape)
+model = get_model_fn(input_shape=train_input_shape,
+                     output_shape=train_output_shape)
+
 
 def perplexity(y_trues, y_preds):
     cross_entropy = K.categorical_crossentropy(y_trues, y_preds)
     perplexity = K.pow(2.0, cross_entropy)
 
-    #Another Method
-    # oneoverlog2 = 1.442695
-    # result = K.log(x) * oneoverlog2
     return perplexity
 
+
 optimizer = Adam(lr=lr_schedule(0))
-model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy',perplexity])
+model.compile(loss='categorical_crossentropy',
+              optimizer=optimizer, metrics=['accuracy', perplexity])
 model.summary(print_fn=print_fn)
 
 
-
 def sample(preds, temperature=1.0):
-    # helper function to sample an index from a probability array
+
     preds = np.asarray(preds).astype('float64')
     preds = np.log(preds) / temperature
     exp_preds = np.exp(preds)
     preds = exp_preds / np.sum(exp_preds)
     probas = np.random.multinomial(1, preds, 1)
     return np.argmax(probas)
-
-
 
 
 def generate_music(epoch, data, diversity, start_index, is_train=False):
@@ -322,10 +294,7 @@ def generate_music(epoch, data, diversity, start_index, is_train=False):
     for i in range(generate_length):
         x_pred = np.zeros((1, maxlen, 259 * embedding_length))
         for t, event in enumerate(events):
-        #     # for idx in range(embedding_length):
-        #
-        #     print("debug:", t, event % 259)
-        #
+
             x_pred[0, t, event % 259] = 1.
 
         preds = model.predict(x_pred, verbose=0)[0]
@@ -335,25 +304,22 @@ def generate_music(epoch, data, diversity, start_index, is_train=False):
         generated.append(next_event)
         events = events[1:] + [next_event]
 
-        # print(next_event, end=',')
-
-    # print('')
-
     if is_train:
-        log_name = "epoch%d_train_diversity%02d" % (epoch + 1, int(diversity * 10))
+        log_name = "epoch%d_train_diversity%02d" % (
+            epoch + 1, int(diversity * 10))
     else:
         if start_index == 0:
-            log_name = "epoch%d_first_diversity%02d" % (epoch + 1, int(diversity * 10))
+            log_name = "epoch%d_first_diversity%02d" % (
+                epoch + 1, int(diversity * 10))
         else:
-            log_name = "epoch%d_random_diversity%02d" % (epoch + 1, int(diversity * 10))
+            log_name = "epoch%d_random_diversity%02d" % (
+                epoch + 1, int(diversity * 10))
 
-
-    # generated = list(generated)
     generated += [1]
 
     data_log_path = os.path.join(data_log_dir, log_name + ".pkl")
     with open(data_log_path, "wb") as data_log_file:
-        data_log_file.write(pkl.dumps(generated) )
+        data_log_file.write(pkl.dumps(generated))
         data_log_file.close()
 
     print_fn("Write %s.pkl to %s" % (log_name, data_log_dir))
@@ -378,7 +344,7 @@ def generate_more_midi(id, data, diversity, start_index, eval_input=False):
     print(generated)
 
     generated = list(generated)
-    # generate_length = 3200
+
     for i in range(generate_length):
         x_pred = np.zeros((1, maxlen, 259 * embedding_length))
         for t, event in enumerate(events):
@@ -390,20 +356,16 @@ def generate_more_midi(id, data, diversity, start_index, eval_input=False):
         generated.append(next_event)
         events = events[1:] + [next_event]
 
-    # print('')
-
     if eval_input:
         log_name = "%d_eval_diversity%02d" % (id + 1, int(diversity * 10))
     else:
         log_name = "%d_train_diversity%02d" % (id + 1, int(diversity * 10))
 
-
-    # generated = list(generated)
     generated += [1]
 
     data_log_path = os.path.join(data_log_dir, log_name + ".pkl")
     with open(data_log_path, "wb") as data_log_file:
-        data_log_file.write(pkl.dumps(generated) )
+        data_log_file.write(pkl.dumps(generated))
         data_log_file.close()
 
     print_fn("Write %s.pkl to %s" % (log_name, data_log_dir))
@@ -412,19 +374,24 @@ def generate_more_midi(id, data, diversity, start_index, eval_input=False):
 
     print_fn("Write %s.midi to %s" % (log_name, midi_log_dir))
 
+
 converage_epoch = -1
+
+
 def on_epoch_end(epoch, logs):
-    # Function invoked at end of each epoch. Prints generated data.
+
     if(epoch+1 == epochs):
         for i in range(10):
             start_index = random.randint(0, len(train_data) - maxlen - 1)
-            generate_more_midi(i,train_data,diversity=0.2,start_index=start_index)
+            generate_more_midi(i, train_data, diversity=0.2,
+                               start_index=start_index)
         for i in range(10):
             start_index = random.randint(0, len(eval_data) - maxlen - 1)
-            generate_more_midi(i, eval_data, diversity=0.2, start_index=start_index, eval_input = True)
+            generate_more_midi(i, eval_data, diversity=0.2,
+                               start_index=start_index, eval_input=True)
 
     global converage_epoch
-    if(converage_epoch < 0.0 ):
+    if(converage_epoch < 0.0):
         if(logs['acc'] > 0.85):
             converage_epoch = epoch
     if (epoch+1) % (epochs // 5) != 0:
@@ -437,34 +404,30 @@ def on_epoch_end(epoch, logs):
 
     start_index = random.randint(0, len(train_data) - maxlen - 1)
 
-    # baseline_music(epoch=epoch, data=eval_data, start_index=0)
-    # baseline_music(epoch=epoch, data=eval_data, start_index=start_index)
-    # baseline_music(epoch=epoch, data=train_data, start_index=start_index, is_train=True)
-
     for diversity in [0.2, 1.2]:
-        # generate_music(epoch=epoch, data=eval_data, diversity=diversity, start_index=0)
-        # generate_music(epoch=epoch, data=eval_data, diversity=diversity, start_index=start_index)
-        generate_music(epoch=epoch, data=train_data, diversity=diversity, start_index=start_index, is_train=True)
 
-
+        generate_music(epoch=epoch, data=train_data,
+                       diversity=diversity, start_index=start_index, is_train=True)
 
 
 print_callback = LambdaCallback(on_epoch_end=on_epoch_end)
 lr_scheduler = LearningRateScheduler(lr_schedule, verbose=0)
-# 参照下面代码加一下TensorBoard
+
+
 class LRTensorBoard(TensorBoard):
-    def __init__(self, log_dir):  # add other arguments to __init__ if you need
+    def __init__(self, log_dir):
         super().__init__(log_dir=log_dir)
 
     def on_epoch_end(self, epoch, logs=None):
         logs.update({'lr': K.eval(self.model.optimizer.lr)})
         super().on_epoch_end(epoch, logs)
 
-tb_callbacks = LRTensorBoard(log_dir = TB_log_dir)
+
+tb_callbacks = LRTensorBoard(log_dir=TB_log_dir)
 
 print_fn("*"*20+exp_name+"*"*20)
-print_fn('x_train shape:'+str(np.shape(x_train)) )
-print_fn('y_train shape:'+str(np.shape(y_train)) )
+print_fn('x_train shape:'+str(np.shape(x_train)))
+print_fn('y_train shape:'+str(np.shape(y_train)))
 
 history_callback = model.fit(x_train, y_train,
                              validation_data=(x_eval, y_eval),
@@ -473,10 +436,10 @@ history_callback = model.fit(x_train, y_train,
                              epochs=epochs,
                              callbacks=[tb_callbacks, lr_scheduler, print_callback])
 
-##Predict and get the final result
+
 start_time = time.time()
 y_pred = model.predict(x_train, batch_size=batch_size)
-speed = (time.time() - start_time ) / ( x_train.shape[0] / batch_size )
+speed = (time.time() - start_time) / (x_train.shape[0] / batch_size)
 
 y_trues = y_train
 
@@ -487,8 +450,9 @@ model_size = model.count_params()
 
 
 print("%s\t%s\t%s\t%s\t%s\t%s\t%s" % ("exp_name", 'model_size', 'final_accuracy', 'final_cross_entropy', 'speed',
-                                  'converage_epoch', 'perplexity'))
-print(exp_name, model_size, final_accuracy, final_cross_entropy, speed, converage_epoch,final_perplexity)
+                                      'converage_epoch', 'perplexity'))
+print(exp_name, model_size, final_accuracy, final_cross_entropy,
+      speed, converage_epoch, final_perplexity)
 max_acc_log_line = "%s\t%d\t%f\t%f\t%f\t%d\t%f" % (exp_name, model_size, final_accuracy, final_cross_entropy, speed,
                                                    converage_epoch, final_perplexity)
 
