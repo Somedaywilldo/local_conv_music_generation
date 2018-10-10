@@ -38,7 +38,7 @@ tf.app.flags.DEFINE_integer('generate_length', 3200,
                             'Number of steps of generated music')
 tf.app.flags.DEFINE_integer('units', 512, 'LSTM Layer Units Number')
 tf.app.flags.DEFINE_integer('dense_size', 0, 'Dense Layer Size')
-tf.app.flags.DEFINE_integer('step', 4, 'Step length when building dataset')
+tf.app.flags.DEFINE_integer('step', 36, 'Step length when building dataset')
 tf.app.flags.DEFINE_integer('embedding_length', 1, 'Embedding length')
 tf.app.flags.DEFINE_string('dataset_name', 'Bach',
                            'Dataset name will be the prefix of exp_name')

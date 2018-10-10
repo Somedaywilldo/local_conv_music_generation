@@ -36,7 +36,7 @@ tf.app.flags.DEFINE_integer('generate_length', 3200,
                             'Number of steps of generated music')
 tf.app.flags.DEFINE_integer('units', 64, 'LSTM Layer Units Number')
 tf.app.flags.DEFINE_integer('dense_size', 0, 'Dense Layer Size')
-tf.app.flags.DEFINE_integer('step', 1, 'Step length when building dataset')
+tf.app.flags.DEFINE_integer('step', 9, 'Step length when building dataset')
 tf.app.flags.DEFINE_integer('embedding_length', 1, 'Embedding length')
 tf.app.flags.DEFINE_string('dataset_name', 'Wikifonia',
                            'Dataset name will be the prefix of exp_name')
