@@ -148,7 +148,7 @@ print('Eval dataset shape:', eval_data.shape)
 train_data = train_data[:int(len(train_data)/1)]
 eval_data = eval_data[:int(len(eval_data)/1)]
 
-log_root = '/unsullied/sharefs/ouyangzhihao/Share/LSTM/Text_Generation_Capacity/Code/Music_Research_Exp/Music_Text_Gneration/9_16/multi_track_bach'
+log_root = './log'
 log_dir = os.path.join(log_root, "logdir", exp_name)
 TB_log_dir = os.path.join(log_root, 'TB_logdir', exp_name)
 console_log_dir = os.path.join(log_root, log_dir, "console")

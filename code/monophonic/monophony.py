@@ -168,7 +168,7 @@ def text_to_events(str):
 
 
 # 9_16
-log_root = '/unsullied/sharefs/ouyangzhihao/Share/LSTM/Text_Generation_Capacity/Code/Music_Research_Exp/Music_Text_Gneration/9_16/single_track_Wiki'
+log_root = './log'
 log_dir = os.path.join(log_root, "logdir", exp_name)
 TB_log_dir = os.path.join(log_root, 'TB_logdir', exp_name)
 console_log_dir = os.path.join(log_root, log_dir, "console")
