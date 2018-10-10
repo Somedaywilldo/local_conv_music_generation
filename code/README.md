@@ -1,5 +1,9 @@
 # Local-conv Network in Music Experiment
-
+## dependency
+```
+keras(Tensorflow backend)
+progressbar
+```
 ## monophonic music model train
 run the following command to launch experiment
 
