@@ -361,7 +361,7 @@ converage_epoch = -1
 
 
 def on_epoch_end(epoch, logs):
-    print('OYZH epoch', epoch)
+    print(' epoch', epoch)
 
     if(epoch+1 == epochs):
         for i in range(10):
