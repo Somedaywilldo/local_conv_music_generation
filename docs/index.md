@@ -38,15 +38,15 @@ LSTM Model:
 
 ### Monophonic Music Generation Result(music sheet)
 
-| LocalConv 3 layer CNN Model | LSTM Model |
-| :---: | :---: |
-| ![Octocat](audio/ST_CNNLocal_1.png)<br> | ![Octocat](audio/ST_LSTM_1.png)<br> |
+| LocalConv 3 layer CNN Model | Naive 3 layer CNN Model | LSTM Model |
+| :---: | :---: | :---: |
+| ![Octocat](audio/ST_CNNLocal_1.png)<br> | ![Octocat](audio/ST_CNNNaive_1.png)<br> | ![Octocat](audio/ST_LSTM_1.png)<br> |
 
 ### Polyphonic Music Generation Result(music sheet)
 
-| LocalConv 3 layer CNN Model | LSTM Model |
-| :---: | :---:|
-| ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br> |
+| LocalConv 3 layer CNN Model | Naive 3 layer CNN Model | LSTM Model |
+| :---: | :---: | :---: |
+| ![Octocat](audio/MT_CNN_3Layer-1.png)<br> | ![Octocat](audio/MT_CNN_3Layer_Naive.png)<br> | ![Octocat](audio/MT_LSTM512_BachAll-1.png)<br> |
 
 
 ### Training Result

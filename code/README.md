@@ -1,8 +1,7 @@
 # Local-conv Network in Music Experiment
 ## dependency
 ```
-keras(Tensorflow backend)
-progressbar
+sh init.sh
 ```
 ## monophonic music model train
 run the following command to launch experiment
@@ -33,7 +32,7 @@ Then extract the data into `./polyphonic/datasets`
 run the following command to launch experiment
 ```
 cd polyphonic
-python3 polyphony_train_conv.py {model id}
+python3 polyphony.py {model id}
 ```
 replace the model id to change the model for comparison
 
