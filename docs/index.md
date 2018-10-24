@@ -81,7 +81,9 @@ Explore the possibility that human composer create music together with AI.
 
 # Analyse
 We visualize the last softmax layer’s result in Figure below to compare the difference of the Local Conv CNN model and CNN model, according to Binary-Valued Gates (Li et al. 2018.), if the model ensures the generated result, this feature(Binary-Valued) will prevent model generating some wandering music result. So, we compare the softmax layer’s output of different models, and we find the Local Conv model can generate a “music like” result because of its more 1,0 values.
+
 ![Octocat](assets/Figure9.png)
+
 Output comparison between resNet20_Naive and resNet20_LocalConv model. The subplot (a) shows the output of resNet20_Naive model, and (b) shows the output of resNet20_LocalConv model. The vertical and horizontal axes represent note pitch and time, respectively. For a particular position, a brighter color indicates the model has higher confidence, or in other words, has lower perplexity. Obviously, local-conv structure helps model generate more precise predictions.
 We let the model generate 1000 steps of music events and visualize the softmax layer’s output of our resNet20_Naive and resNet20_LocalConv model. Both of these models are trained on the Bach dataset. We calculated the average confidence for each output dimension when it is chosen by softmax function in Figure above. We find Local Conv model generates more confident prediction.
 
@@ -91,11 +93,16 @@ In a CNN, each Conv layer has several learned template matching filters that max
 
 The idea behind activation maximization is simple in hindsight - Generating an input image that maximizes the filter output activations. i.e., we compute
 
-$$ ∂ActivationMaximizationLoss/(∂ input ) $$
+<p align="center">
+    <img src="http://bit.ly/2OHFwhE">
+</p>
+
+
 
 and use this estimate to update the input. ActivationMaximization loss (Kotikalapudi et al. 2017) outputs small values for large filter activations (we are minimizing losses during gradient descent iterations). This allows us to understand what sort of input patterns activate a particular filter. For example, there could be an eye filter that activates for the presence of the eye within the input image.
 
 Similarly, in music generation task, we generate an input that maximizes the final softmax layer output corresponding to each note pitch class and finally get 38 input-expectations for each model. We visualize one of 38 results in Figure below.
+
 ![Octocat](assets/Figure10.png)
 
 Figure above is Comparison of two models’ input expectations on a particular output pitch. (a) and (b) is corresponding to resNet20_Naive and resNet20_LocalConv respectively. The vertical and horizontal axes represent note pitch and time, respectively. For a particular position, red color indicates the model has higher confidence about what kind of input it expects.
