@@ -82,7 +82,11 @@ Explore the possibility that human composer create music together with AI.
 # Analyse
 We visualize the last softmax layer’s result in Figure below to compare the difference of the Local Conv CNN model and CNN model, according to Binary-Valued Gates (Li et al. 2018.), if the model ensures the generated result, this feature(Binary-Valued) will prevent model generating some wandering music result. So, we compare the softmax layer’s output of different models, and we find the Local Conv model can generate a “music like” result because of its more 1,0 values.
 
-![Octocat](assets/Figure9.png)
+<p align="center">
+    <img src="assets/Figure9.png">
+    ![Octocat](assets/Figure9.png)
+</p>
+
 
 Output comparison between resNet20_Naive and resNet20_LocalConv model. The subplot (a) shows the output of resNet20_Naive model, and (b) shows the output of resNet20_LocalConv model. The vertical and horizontal axes represent note pitch and time, respectively. For a particular position, a brighter color indicates the model has higher confidence, or in other words, has lower perplexity. Obviously, local-conv structure helps model generate more precise predictions.
 We let the model generate 1000 steps of music events and visualize the softmax layer’s output of our resNet20_Naive and resNet20_LocalConv model. Both of these models are trained on the Bach dataset. We calculated the average confidence for each output dimension when it is chosen by softmax function in Figure above. We find Local Conv model generates more confident prediction.
