@@ -84,7 +84,6 @@ We visualize the last softmax layer’s result in Figure below to compare the di
 
 <p align="center">
     <img src="assets/Figure9.png">
-    ![Octocat](assets/Figure9.png)
 </p>
 
 
