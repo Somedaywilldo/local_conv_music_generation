@@ -82,7 +82,7 @@ We can find the Local Conv model distinctly improve the performance of naive CNN
 ### Human Behavior Experiment
 As for monophonic music generation task, we randomly select 10 generated music from each model’s generated result: our LSTM model, resNet20 Naive model and resNet20 LocalConv model. We clip each music to 8 bar length. Via a survey website, 45 testers are required to judge the harmony and reality of the music.
 From the User Study Result. The dark grey and grey square bar represents user’s harmony and reality average score respectively. All the scores range from 0-5.
-![Octocat](assets/Figure8_1.png)
+![Octocat](assets/images/Figure8_1.png)
 We also uploaded all the data we use to do this human behavior experiment. 
 
 [Google Drive](https://drive.google.com/open?id=1MoeVKZaNtENxdXeWNnMcl-I6RcD2O3Nd)
