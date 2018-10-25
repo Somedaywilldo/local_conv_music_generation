@@ -27,19 +27,25 @@ For resNet, we can divide the resNet into different blocks according to the feat
 
 
 
-| Naive 3 layer CNN Model | LocalConv 3 layer CNN Model | Naive resNet Model |
-| :---: | :---: | :---: |
-| {% include audio_player.html filename="ST_CNNNaive_1.mp3" %} | {% include audio_player.html filename="ST_CNNLocal_1.mp3" %} | {% include audio_player.html filename="ST_resNetNaive_1.mp3" %} |
+| Naive 3 layer CNN Model | LocalConv 3 layer CNN Model |
+| :---: | :---: |
+| {% include audio_player.html filename="ST_CNNNaive_1.mp3" %} | {% include audio_player.html filename="ST_CNNLocal_1.mp3" %} |
 
-|LocalConv resNet Model|LSTM Model|
-| :---: | :---: | :---: |
-|{% include audio_player.html filename="ST_resNetLocal_1.mp3" %}|{% include audio_player.html filename="ST_LSTM_1.mp3" %}|
+
+|Naive resNet Model |LocalConv resNet Model|
+| :---: | :---: |
+|{% include audio_player.html filename="ST_resNetNaive_1.mp3" %} |{% include audio_player.html filename="ST_resNetLocal_1.mp3" %}|
+
+|LSTM Model|
+| :---: |
+|{% include audio_player.html filename="ST_LSTM_1.mp3" %}|
 
 ### Polyphonic Music Generation Result(mp3)
-LocalConv 3 layer CNN Model:
-{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}
-LSTM Model:
-{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}
+
+
+|LocalConv 3 layer CNN Model|LSTM Model|
+| :---: | :---: |
+|{% include audio_player.html filename="MT_CNN_3Layer-1.mp3" %}|{% include audio_player.html filename="MT_LSTM512_BachAll-1.mp3" %}|
 
 ### Monophonic Music Generation Result(music sheet)
 
