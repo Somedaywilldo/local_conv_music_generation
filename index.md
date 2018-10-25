@@ -8,7 +8,10 @@ With the development of deep learning, more and more neural networks are applied
 
 # Application: XiaoJoy Project
 Explore the possibility that human composer create music together with AI. 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M1_H2c-XFQ0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<center>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/M1_H2c-XFQ0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+</center>
 
 # Models
 ### Locally Connected CNN
