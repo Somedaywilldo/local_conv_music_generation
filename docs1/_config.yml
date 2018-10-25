@@ -1,6 +1,0 @@
-title: Music Generation with Local Connected Convolutional Neural Network
-# description: With the development of deep learning, more and more neural networks are applied to the music generation task especially the recurrent neural networks like LSTM. Besides, recent work demonstrates that feedforward model like CNN achieves parallel result in music generation task. However, we found the quality of music drops exponentially as the length of sequence increases. Plus most of the current models are weak in multi-track music generation because more information in multi-track music always means a much longer sequence. Then we found a simple change to CNN -- Locally Connected Convolutional CNN could remarkably boost the performance of existing CNN architecture for music generation task. Locally Connected CNN model generated better music than RNN model obviously. We analyse why Locally Connected CNN is much better at handling long sequence than other models, and we also use human behavior experiment to prove our model’s generated music is better.
-description: 
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-cayman
