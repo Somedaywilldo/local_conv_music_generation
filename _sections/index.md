@@ -20,7 +20,7 @@ structure of CNN as **_b_** and **_c_**. In architecture **_b_**, we put the Loc
 
 For resNet, we can divide the resNet into different blocks according to the feature map size, and there are two main type of CNN layers in resNet architecture: one is the ordinary CNN layer (yellow rectangle) and another is the transition CNN layer in order to down-sample the feature (green rectangle), plus, we use blue rectangle to represent Local Conv layer. We designed one effective architecture to utilize the Local Conv in different resNet blocks. For deep resNet, it is impractical to replace all the ordinary CNN layer with Local Conv layer. Therefore, Local Conv layers should be used as little as possible. Referencing the principle of previous design of simple CNN and resNet basic blocks, we put the Local Conv layer to the last layer of each basic resNet block like res-local as Figure below shows.
 
-![Octocat](../assets/images/models.png)<br>
+![Octocat](assets/images/models.png)<br>
 
 # Result
 ### Monophonic Music Generation Result(mp3)
@@ -45,13 +45,13 @@ LSTM Model:
 
 | LocalConv 3 layer CNN Model | Naive 3 layer CNN Model | LSTM Model |
 | :---: | :---: | :---: |
-| ![Octocat](../assets/images/ST_CNNLocal_1.png)<br> | ![Octocat](../assets/images/ST_CNNNaive_1.png)<br> | ![Octocat](../assets/images/ST_LSTM_1.png)<br> |
+| ![Octocat](assets/images/ST_CNNLocal_1.png)<br> | ![Octocat](assets/images/ST_CNNNaive_1.png)<br> | ![Octocat](assets/images/ST_LSTM_1.png)<br> |
 
 ### Polyphonic Music Generation Result(music sheet)
 
 | LocalConv 3 layer CNN Model | Naive 3 layer CNN Model | LSTM Model |
 | :---: | :---: | :---: |
-| ![Octocat](../assets/images/MT_CNN_3Layer-1.png)<br> | ![Octocat](../assets/images/MT_CNN_3Layer_Naive.png)<br> | ![Octocat](../assets/images/MT_LSTM512_BachAll-1.png)<br> |
+| ![Octocat](assets/images/MT_CNN_3Layer-1.png)<br> | ![Octocat](assets/images/MT_CNN_3Layer_Naive.png)<br> | ![Octocat](assets/images/MT_LSTM512_BachAll-1.png)<br> |
 
 
 ### Training Result
@@ -73,7 +73,7 @@ We can find the Local Conv model distinctly improve the performance of naive CNN
 ### Human Behavior Experiment
 As for monophonic music generation task, we randomly select 10 generated music from each model’s generated result: our LSTM model, resNet20 Naive model and resNet20 LocalConv model. We clip each music to 8 bar length. Via a survey website, 45 testers are required to judge the harmony and reality of the music.
 From the User Study Result. The dark grey and grey square bar represents user’s harmony and reality average score respectively. All the scores range from 0-5.
-![Octocat](../assets/images/Figure8_1.png)
+![Octocat](assets/images/Figure8_1.png)
 We also uploaded all the data we use to do this human behavior experiment. 
 
 [Google Drive](https://drive.google.com/open?id=1MoeVKZaNtENxdXeWNnMcl-I6RcD2O3Nd)
@@ -88,7 +88,7 @@ Explore the possibility that human composer create music together with AI.
 We visualize the last softmax layer’s result in Figure below to compare the difference of the Local Conv CNN model and CNN model, according to Binary-Valued Gates (Li et al. 2018.), if the model ensures the generated result, this feature(Binary-Valued) will prevent model generating some wandering music result. So, we compare the softmax layer’s output of different models, and we find the Local Conv model can generate a “music like” result because of its more 1,0 values.
 
 <p align="center">
-    <img src="../assets/images/Figure9.png">
+    <img src="assets/images/Figure9.png">
 </p>
 
 
@@ -111,7 +111,7 @@ and use this estimate to update the input. ActivationMaximization loss (Kotikala
 
 Similarly, in music generation task, we generate an input that maximizes the final softmax layer output corresponding to each note pitch class and finally get 38 input-expectations for each model. We visualize one of 38 results in Figure below.
 
-![Octocat](../assets/images/Figure10.png)
+![Octocat](assets/images/Figure10.png)
 
 Figure above is Comparison of two models’ input expectations on a particular output pitch. (a) and (b) is corresponding to resNet20_Naive and resNet20_LocalConv respectively. The vertical and horizontal axes represent note pitch and time, respectively. For a particular position, red color indicates the model has higher confidence about what kind of input it expects.
 
