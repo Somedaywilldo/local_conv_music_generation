@@ -72,8 +72,8 @@ For resNet, we can divide the resNet into different blocks according to the feat
 For monophonic music generation task, we get the result as followed.
 We can find the Local Conv model distinctly improve the performance of naive CNN model not only for simple CNN or complex CNN like resNet. Although the drawback of Local Conv model is that it brings more weights to the original model, the performance of Local Conv CNN ex-ceeds LSTM in 3 aspects:1. The speed of Local Conv model is 3~4 times faster than LSTM model. 2. CNN model converge faster than the LSTM model. 3. For large dataset like Wikifonia, the loss of Local Conv resNet is much less than LSTM. Usually, a smaller loss usually means a better structure of music in music generation task.
 
-| Model | Loss | TimeCost<br>（ms/event)| Converge Epoch | Size/M |
-| :---: | :---: | :---: | :---: | :---: |
+| Model | Loss | TimeCost<br>（ms/event)| Converge<br> Epochs | Weights<br>(million) |
+| :---- | :---: | :---: | :---: | :---: |
 | CNN\_a | 0.0103 | 9.30 | 15 | 1.39 |
 | CNN\_b | 0.4412 | 9.03 | 61 | 0.18 |
 | CNN\_c | 0.0080 | 9.91 | 15 | 1.16 |
