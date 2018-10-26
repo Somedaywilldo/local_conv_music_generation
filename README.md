@@ -1,29 +1,35 @@
 # local_conv_music_generation
-Music Generation with Local Connected Convolutional Neural Network
 
-We prepare a demo page to introduce our work:
+Music Generation with Local Connected Convolutional Neural Network.
 
-[Demo Link](https://somedaywilldo.github.io/local_conv_music_generation/)
+Developed by: Zhihao Ouyang, Yihang Yin, Kun Yan.
 
-Also all the codes are released at:
+Demo of this project is released at [Demo Link](https://somedaywilldo.github.io/local_conv_music_generation/).
 
-[Code Link](https://github.com/Somedaywilldo/local_conv_music_generation/tree/master/code)
+## Set Up the Environment
 
-
-# Local-conv Network in Music Experiment
-## dependency
-```
-cd code
-sh init.sh
-```
-## monophonic music model train
-run the following command to launch experiment
+Required Python3 Packages:
 
 ```
-cd code/monophonic
-python3 monophony.py {model id}
+keras
+python-rtmidi
+pretty-midi
+progressbar
 ```
-replace the model id to change the model for comparison
+
+We've writen these in script, for your convenience, just do this in shell:
+
+```shell
+$ sh init.sh
+```
+## Train the Monophony Model
+Run the following command to launch experiment.
+
+```shell
+$ cd monophony
+$ python3 monophony.py <model_id>
+```
+Replace the **<model_id>** to change the model for comparison.
 
 ```
     0 for 'conv1_model_a'
@@ -36,18 +42,18 @@ replace the model id to change the model for comparison
     7 for 'LSTM_model'
 ```
 
-## polyphonic music model train
+## Train the Polyphony Model
 ### First Step
 Download the training data from this [link](https://drive.google.com/open?id=18205S7ut3MEq9A3aiKS2tpY06Y7Khq3E)
 
 Then extract the data into `./polyphonic/datasets`
 ### Second Step
-run the following command to launch experiment
+Run the following command to launch experiment.
+```shell
+$ cd polyphony
+$ python3 polyphony.py <model_id>
 ```
-cd code/polyphonic
-python3 polyphony.py {model id}
-```
-replace the model id to change the model for comparison
+Replace the **<model_id>** to change the model for comparison
 
 ```
     0 for 'conv1_model_a'
@@ -60,4 +66,7 @@ replace the model id to change the model for comparison
     7 for 'LSTM_model'
 ```
 
+
+
+## Contact
 
