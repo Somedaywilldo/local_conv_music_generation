@@ -17,7 +17,11 @@ Explore the possibility that human composer create music together with AI.
 ### Locally Connected CNN
 Locally Connected CNN
 The reason why we introduce Locally Connected Convolutional layer (Local Conv) to sequence problem is that we believe different parts in a specific sequence should not share the same kernel. Each timestep of the input sequence should have different characteristics. For example, the beginning note in a music sequence usually differs from the last note. The first note of a sequence usually contains notes that belong to the primary chord, but the last note in music contains notes come from Fifth Chord or Subdominant Seventh Chord. As Figure below shows, it’s better for the first C major chord bar and the last E minor chord bar use different CNN kernel (Local Conv).
-![Octocat](assets/images/LocalConv_Music.png)<br>
+
+<p align="center">
+    <img src="assets/images/LocalConv_Music.png" width = "80%" height="80%">
+</p>
+
 We use a simple 3-layer CNN to compare the naive CNN model and Locally Connected version CNN. From the Figure below, we compare 3 main types of Locally Connected version CNN with naive CNN. We can replace all the general convolutional blocks by Local Conv blocks like type **_a_**. As Taigman mentioned in Deepface (Taigman et al. 2014), Local Conv brings more weights to CNN model. It’s necessary to mix Local Conv together with naive CNN model to reduce this burden. So, we designed other two
 structure of CNN as **_b_** and **_c_**. In architecture **_b_**, we put the Local Conv in the first layer of the CNN architecture, there will be less weights in model because of the size of d tends to be smaller in the first layer, but this will provide the model with a better perspective field.
 
@@ -82,7 +86,11 @@ We can find the Local Conv model distinctly improve the performance of naive CNN
 ### Human Behavior Experiment
 As for monophonic music generation task, we randomly select 10 generated music from each model’s generated result: our LSTM model, resNet20 Naive model and resNet20 LocalConv model. We clip each music to 8 bar length. Via a survey website, 45 testers are required to judge the harmony and reality of the music.
 From the User Study Result. The dark grey and grey square bar represents user’s harmony and reality average score respectively. All the scores range from 0-5.
-![Octocat](assets/images/Figure8_1.png)
+
+<p align="center">
+    <img src="assets/images/Figure8_1.png" width = "65%", height = "65%">
+</p>
+
 We also uploaded all the data we use to do this human behavior experiment. 
 
 [Google Drive](https://drive.google.com/open?id=1MoeVKZaNtENxdXeWNnMcl-I6RcD2O3Nd)
