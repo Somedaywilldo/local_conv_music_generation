@@ -118,11 +118,9 @@ In a CNN, each Conv layer has several learned template matching filters that max
 
 The idea behind activation maximization is simple in hindsight - Generating an input image that maximizes the filter output activations. i.e., we compute:
 
-$$
-\frac{\alpha ActivationMaximizationloss}{\alpha input}
-$$
-
-
+<p align="center">
+    <img src="http://bit.ly/2OHFwhE">
+</p>
 and use this estimate to update the input. ActivationMaximization loss (Kotikalapudi et al. 2017) outputs small values for large filter activations (we are minimizing losses during gradient descent iterations). This allows us to understand what sort of input patterns activate a particular filter. For example, there could be an eye filter that activates for the presence of the eye within the input image.
 
 Similarly, in music generation task, we generate an input that maximizes the final softmax layer output corresponding to each note pitch class and finally get 38 input-expectations for each model. We visualize one of 38 results in Figure below.
