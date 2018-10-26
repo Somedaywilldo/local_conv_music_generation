@@ -91,6 +91,8 @@ From the User Study Result. The dark grey and grey square bar represents user’
     <img src="assets/images/Figure8_1.png" width = "65%", height = "65%">
 </p>
 
+
+
 We also uploaded all the data we use to do this human behavior experiment. 
 
 [Google Drive](https://drive.google.com/open?id=1MoeVKZaNtENxdXeWNnMcl-I6RcD2O3Nd)
@@ -114,11 +116,12 @@ The same conclusion can be inferred in a different reverse method. Which is call
 
 In a CNN, each Conv layer has several learned template matching filters that maximize their output when a similar template pattern is found in the input. First Conv layer is easy to interpret: simply visualize the weights as an image. But subsequent Conv filters operate over the outputs of previous Conv filters (which indicate the presence or absence of some templates), making them hard to interpret.
 
-The idea behind activation maximization is simple in hindsight - Generating an input image that maximizes the filter output activations. i.e., we compute
+The idea behind activation maximization is simple in hindsight - Generating an input image that maximizes the filter output activations. i.e., we compute:
 
 $$
 \frac{\alpha ActivationMaximizationloss}{\alpha input}
 $$
+
 
 and use this estimate to update the input. ActivationMaximization loss (Kotikalapudi et al. 2017) outputs small values for large filter activations (we are minimizing losses during gradient descent iterations). This allows us to understand what sort of input patterns activate a particular filter. For example, there could be an eye filter that activates for the presence of the eye within the input image.
 
