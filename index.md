@@ -88,7 +88,7 @@ As for monophonic music generation task, we randomly select 10 generated music f
 From the User Study Result. The dark grey and grey square bar represents user’s harmony and reality average score respectively. All the scores range from 0-5.
 
 <p align="center">
-    <img src="assets/images/Figure8_1.png" width = "65%", height = "65%">
+    <img src="assets/images/Figure8_1.png" width = "65%" height = "65%">
 </p>
 
 
